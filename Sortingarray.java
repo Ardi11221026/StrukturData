@@ -14,7 +14,7 @@ public static void main(String[] args) {
 
     System.out.println("Original Array:" + Arrays.toString(numArray));
 
-    //mengaplikasikan insertion sort kepada array
+    //mengaplikasikan insertion sort kepada arraynya
     for(int k=1; k<numArray.length; k++)   {  
         int temp = numArray[k]; 
         int j= k-1;  
