@@ -2,7 +2,7 @@ import java.util.Random;
 
 public class InsertionSort {
     public static void main(String[] args) {
-        int[] arr = generateRandomArray(100);
+        int[] arr = generateRandomArray(10);
         System.out.println("Array sebelum diurutkan:");
         printArray(arr);
 
