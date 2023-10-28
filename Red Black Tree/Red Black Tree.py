@@ -112,7 +112,7 @@ class Tree:
             return False
         self.root = self._remove(self.root, key)
         self._balancingTree(self.root)
-        print(f"Succeded Deleted {key} node")
+        print(f"Succeded Deleted node {key}")
         return True
 
     def _remove(self, node, key):
@@ -171,7 +171,7 @@ class Tree:
     def _balancingTree(self, node):
         while self.root != node and node.getParent() is not None and node.getParent().isRed():
             if node.getParent() == node.getParent().getParent().getLeft():
-                if node.getParent().getParent().getRight() is not None and node.getParent().getParent().getRight().isRed():  # Perbaikan baris 91
+                if node.getParent().getParent().getRight() is not None and node.getParent().getParent().getRight().isRed(): 
                     node.getParent().getParent().getRight().setRed(False)
                     node.getParent().getParent().setRed(True)
                     node.getParent().setRed(False)
@@ -179,13 +179,13 @@ class Tree:
                 else:
                     if node == node.getParent().getRight():
                         node = node.getParent()
-                        self.leftRotate(node)  # Perbaikan baris 197
+                        self.leftRotate(node)  
                     node.getParent().setRed(False)
                     node.getParent().getParent().setRed(True)
                     self.rightRotate(node.getParent().getParent())
             else:
                 if node.getParent() == node.getParent().getParent().getRight():
-                    if node.getParent().getParent().getLeft() is not None and node.getParent().getParent().getLeft().isRed():  # Perbaikan baris 243
+                    if node.getParent().getParent().getLeft() is not None and node.getParent().getParent().getLeft().isRed(): 
                         node.getParent().getParent().getLeft().setRed(False)
                         node.getParent().getParent().setRed(True)
                         node.getParent().setRed(False)
@@ -223,23 +223,33 @@ class Tree:
     def getRoot(self):
         return self.root
 
-    def inorderTraversal(self, node):
-        if node is not None:
-            self.inorderTraversal(node.getLeft())
-            print(node.getKey(), end=' ')
-            self.inorderTraversal(node.getRight())
-
     def preorderTraversal(self, node):
         if node is not None:
             print(node.getKey(), end=' ')
             self.preorderTraversal(node.getLeft())
             self.preorderTraversal(node.getRight())
 
+    def inorderTraversal(self, node):
+        if node is not None:
+            self.inorderTraversal(node.getLeft())
+            print(node.getKey(), end=' ')
+            self.inorderTraversal(node.getRight())
+
     def postorderTraversal(self, node):
         if node is not None:
             self.postorderTraversal(node.getLeft())
             self.postorderTraversal(node.getRight())
             print(node.getKey(), end=' ')
+
+    def visualize(self):
+        if self.root is not None:
+            self._visualize(self.root, "", True)
+
+    def _visualize(self, node, prefix, is_right):
+        if node is not None:
+            print(prefix, "|-- " if is_right else "`-- ", node.getKey(), " (R)" if node.isRed() else " (B)")
+            self._visualize(node.getRight(), prefix + ("|    " if is_right else "     "), True)
+            self._visualize(node.getLeft(), prefix + ("|    " if is_right else "     "), False)
 
 if __name__ == "__main__":
     tree = Tree()
@@ -252,16 +262,21 @@ if __name__ == "__main__":
     tree.add(9)
     tree.add(10)
     tree.add(1)
+    tree.add(12)
     tree.add(6)
+    tree.add(11)
 
-    tree.remove(10)
-
-    print("Inorder Traversal:")
+    tree.remove(12)
+    
+    print("In-order Traversal:")
     tree.inorderTraversal(tree.getRoot())
-    
-    print("\nPreorder Traversal:")
+
+    print("\nPre-order Traversal:")
     tree.preorderTraversal(tree.getRoot())
-    
-    print("\nPostorder Traversal:")
+
+    print("\nPost-order Traversal:")
     tree.postorderTraversal(tree.getRoot())
+
+    print("\nRed-Black Tree Structure:")
+    tree.visualize()
     
