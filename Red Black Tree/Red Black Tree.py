@@ -223,18 +223,6 @@ class Tree:
     def getRoot(self):
         return self.root
 
-    def display(self):
-        treeStringBuilder = []
-        self._display(self.root, "", True, treeStringBuilder)
-        for line in treeStringBuilder:
-            print(line)
-
-    def _display(self, node, prefix, isLeft, treeStringBuilder):
-        if node is not None:
-            treeStringBuilder.append(prefix + ("|-- " if isLeft else "`-- ") + f"{node.getKey()} ({'R' if node.isRed() else 'B'})")
-            self._display(node.getLeft(), prefix + ("|   " if isLeft else "    "), True, treeStringBuilder)
-            self._display(node.getRight(), prefix + ("|   " if isLeft else "    "), False, treeStringBuilder)
-
     def inorderTraversal(self, node):
         if node is not None:
             self.inorderTraversal(node.getLeft())
@@ -277,5 +265,3 @@ if __name__ == "__main__":
     print("\nPostorder Traversal:")
     tree.postorderTraversal(tree.getRoot())
     
-    print("\n")
-    tree.display()
