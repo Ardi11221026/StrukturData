@@ -245,11 +245,17 @@ class Tree:
         if self.root is not None:
             self._visualize(self.root, "", True)
 
-    def _visualize(self, node, prefix, is_right):
+    def display(self):
+        treeStringBuilder = []
+        self._display(self.root, "", True, treeStringBuilder)
+        for line in treeStringBuilder:
+            print(line)
+
+    def _display(self, node, prefix, isRight, treeStringBuilder):
         if node is not None:
-            print(prefix, "|-- " if is_right else "`-- ", node.getKey(), " (R)" if node.isRed() else " (B)")
-            self._visualize(node.getRight(), prefix + ("|    " if is_right else "     "), True)
-            self._visualize(node.getLeft(), prefix + ("|    " if is_right else "     "), False)
+            treeStringBuilder.append(prefix + ("|-- " if isRight else "`-- ") + f"{node.getKey()} ({'R' if node.isRed() else 'B'})")
+            self._display(node.getRight(), prefix + ("|   " if isRight else "    "), True, treeStringBuilder)
+            self._display(node.getLeft(), prefix + ("|   " if isRight else "    "), False, treeStringBuilder)
 
 if __name__ == "__main__":
     tree = Tree()
@@ -278,5 +284,4 @@ if __name__ == "__main__":
     tree.postorderTraversal(tree.getRoot())
 
     print("\nRed-Black Tree Structure:")
-    tree.visualize()
-    
+    tree.display()
