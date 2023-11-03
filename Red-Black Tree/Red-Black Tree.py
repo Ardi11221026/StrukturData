@@ -3,7 +3,7 @@ class Node:
         self.key = key
         self.right = None
         self.left = None
-        self.parent = None
+        self.parent = None  
         self.red = False
 
     def setRight(self, right):
