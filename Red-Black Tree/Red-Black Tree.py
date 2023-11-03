@@ -36,7 +36,6 @@ class Node:
     def setParent(self, parent):
         self.parent = parent
 
-
 class Tree:
     def __init__(self):
         self.root = None
@@ -198,7 +197,6 @@ class Tree:
                         node.getParent().getParent().setRed(True)
                         self.leftRotate(node.getParent().getParent())
             self.root.setRed(False)
-
 
     def inorderTraversal(self, node):
         if node is not None:
