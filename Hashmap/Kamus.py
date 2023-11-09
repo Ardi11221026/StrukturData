@@ -133,8 +133,34 @@ class RedBlackTree:
         return self._search(current.right, key)
 
     def gimmick(self):
-        for i in range(10):
-            print(random.randint(range1, range2))
+        # Generate a random number to determine the gimmick action
+        gimmick_choice = random.randint(1, 3)
+
+        if gimmick_choice == 1:
+            print("Gimmick Action 1: Perform a left rotation")
+            # Example: Perform a left rotation on a random node
+            random_node = self._get_random_node(self.root)
+            self._left_rotate(random_node)
+        elif gimmick_choice == 2:
+            print("Gimmick Action 2: Perform a right rotation")
+            # Example: Perform a right rotation on a random node
+            random_node = self._get_random_node(self.root)
+            self._right_rotate(random_node)
+        else:
+            print("Gimmick Action 3: Change the color of a random node to RED")
+            # Example: Change the color of a random node to RED
+            random_node = self._get_random_node(self.root)
+            random_node.color = "RED"
+
+    def _get_random_node(self, current):
+        # Helper method to get a random node in the tree
+        if current == self.NIL_LEAF or random.random() < 0.5:
+            return current
+        elif random.random() < 0.5:
+            return self._get_random_node(current.left)
+        else:
+            return self._get_random_node(current.right)
+
 
 # Contoh penggunaan kamus
 rb_tree = RedBlackTree()
@@ -144,7 +170,6 @@ rb_tree.insert("mobil", "car")
 
 while True:
     user_input = input("Masukkan kata yang ingin diterjemahkan (q untuk keluar): ")
-    
     if user_input == "q":
         break
 
