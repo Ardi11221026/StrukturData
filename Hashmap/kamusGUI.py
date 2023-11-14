@@ -2,7 +2,7 @@ import tkinter as tk
 from tkinter import simpledialog, messagebox
 import random
 
-from kamusGUI import RedBlackTree
+from RedBlackTree import RedBlackTree
 
 class KamusGUI:
     def __init__(self, master):
@@ -51,8 +51,8 @@ class KamusGUI:
                     lines = file.readlines()
                     for line in lines:
                         kata, terjemahan = line.strip().split(":")
-                        if terjemahan.lower() == kata_inggris.lower():
-                            self.show_message(f"Terjemahan dari '{kata_inggris}' ke bahasa Indonesia: {kata}")
+                        if kata.lower() == kata_inggris.lower():
+                            self.show_message(f"Terjemahan dari '{kata_inggris}' ke bahasa Indonesia: {terjemahan}")
                             self.gimmick()
                             return
             except FileNotFoundError:
