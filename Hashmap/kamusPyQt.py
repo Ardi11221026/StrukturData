@@ -55,7 +55,7 @@ class KamusGUI(QMainWindow):
                 with open("KamusPyQt5.txt", "r") as file:
                     lines = file.readlines()
                 for line in lines:
-                    kata, terjemahan = line.strip().split(":")
+                    kata, terjemahan = line.strip().split(" : ")
                     if terjemahan.lower() == kata_inggris.lower():
                         QMessageBox.information(self, "Terjemahan", f"Terjemahan dari '{kata_inggris}' ke bahasa Indonesia: {kata}")
                         self.gimmick()
@@ -90,7 +90,7 @@ class KamusGUI(QMainWindow):
                 if not lines:
                     QMessageBox.information(self, "Kamus Kosong", "Kamus masih kosong.")
                 else:
-                    kamus_content = "".join(lines)
+                    kamus_content = " ".join(lines)
                     QMessageBox.information(self, "Kamus", kamus_content)
 
     def gimmick(self):

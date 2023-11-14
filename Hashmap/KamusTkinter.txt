@@ -1,0 +1,3 @@
+apel:apple
+babi:pig
+cacing:worm

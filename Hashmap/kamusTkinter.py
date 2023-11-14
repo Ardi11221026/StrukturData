@@ -30,8 +30,8 @@ class KamusGUI(tk.Tk):
     def terjemahkan_indonesia_ke_inggris(self):
         kata_indonesia = simpledialog.askstring("Terjemahkan ke Inggris", "Masukkan kata dalam bahasa Indonesia:")
         if kata_indonesia:
-            if os.path.isfile("KamusGUI.txt"):
-                with open("KamusGUI.txt", "r") as file:
+            if os.path.isfile("KamusTkinter.txt"):
+                with open("KamusTkinter.txt", "r") as file:
                     lines = file.readlines()
                 for line in lines:
                     kata, terjemahan = line.strip().split(":")
@@ -47,11 +47,11 @@ class KamusGUI(tk.Tk):
     def terjemahkan_inggris_ke_indonesia(self):
         kata_inggris = simpledialog.askstring("Terjemahkan ke Indonesia", "Masukkan kata dalam bahasa Inggris:")
         if kata_inggris:
-            if os.path.isfile("KamusGUI.txt"):
-                with open("KamusGUI.txt", "r") as file:
+            if os.path.isfile("KamusTkinter.txt"):
+                with open("KamusTkinter.txt", "r") as file:
                     lines = file.readlines()
                 for line in lines:
-                    kata, terjemahan = line.strip().split(":")
+                    kata, terjemahan = line.strip().split(" : ")
                     if terjemahan.lower() == kata_inggris.lower():
                         messagebox.showinfo("Terjemahan", f"Terjemahan dari '{kata_inggris}' ke bahasa Indonesia: {kata}")
                         self.gimmick()
@@ -73,20 +73,20 @@ class KamusGUI(tk.Tk):
         terjemahan = simpledialog.askstring("Tambah Kata", "Masukkan terjemahan dalam bahasa Inggris:")
         if kata and terjemahan:
             self.kamus.insert(kata.lower(), terjemahan.lower())
-            with open("KamusGUI.txt", "a") as file:
+            with open("KamusTkinter.txt", "a") as file:
                 file.write(f"{kata.lower()}:{terjemahan.lower()}\n")
             messagebox.showinfo("Kata Ditambahkan", f"Kata '{kata}' sudah ditambahkan ke dalam kamus.")
 
     def tampilkan_kata(self):
-        if not os.path.isfile("KamusGUI.txt"):
+        if not os.path.isfile("KamusTkinter.txt"):
             messagebox.showinfo("Kamus Belum Dibuat", "Kamus belum dibuat.")
         else:
-            with open("KamusGUI.txt", "r") as file:
+            with open("KamusTkinter.txt", "r") as file:
                 lines = file.readlines()
                 if not lines:
                     messagebox.showinfo("Kamus Kosong", "Kamus masih kosong.")
                 else:
-                    kamus_content = "Isi kamus:\n" + "\n".join(lines)
+                    kamus_content = " ".join(lines)
                     messagebox.showinfo("Kamus", kamus_content)
 
     def gimmick(self):
