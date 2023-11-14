@@ -34,7 +34,7 @@ class KamusGUI(tk.Tk):
                 with open("KamusTkinter.txt", "r") as file:
                     lines = file.readlines()
                 for line in lines:
-                    kata, terjemahan = line.strip().split(":")
+                    kata, terjemahan = line.strip().split(" : ")
                     if kata.lower() == kata_indonesia.lower():
                         messagebox.showinfo("Terjemahan", f"Terjemahan dari '{kata_indonesia}' ke bahasa Inggris: {terjemahan}")
                         self.gimmick()
@@ -51,7 +51,7 @@ class KamusGUI(tk.Tk):
                 with open("KamusTkinter.txt", "r") as file:
                     lines = file.readlines()
                 for line in lines:
-                    kata, terjemahan = line.strip().split(":")
+                    kata, terjemahan = line.strip().split(" : ")
                     if terjemahan.lower() == kata_inggris.lower():
                         messagebox.showinfo("Terjemahan", f"Terjemahan dari '{kata_inggris}' ke bahasa Indonesia: {kata}")
                         self.gimmick()
@@ -74,7 +74,7 @@ class KamusGUI(tk.Tk):
         if kata and terjemahan:
             self.kamus.insert(kata.lower(), terjemahan.lower())
             with open("KamusTkinter.txt", "a") as file:
-                file.write(f"{kata.lower()}:{terjemahan.lower()}\n")
+                file.write(f"{kata.lower()} : {terjemahan.lower()}\n")
             messagebox.showinfo("Kata Ditambahkan", f"Kata '{kata}' sudah ditambahkan ke dalam kamus.")
 
     def tampilkan_kata(self):

@@ -14,7 +14,7 @@ class KamusCLI:
                 with open("KamusCLI.txt", "r") as file:
                     lines = file.readlines()
                 for line in lines:
-                    kata, terjemahan = line.strip().split(":")
+                    kata, terjemahan = line.strip().split(" : ")
                     if kata.lower() == kata_indonesia.lower():
                         print(f"Terjemahan dari '{kata_indonesia}' ke bahasa Inggris: {terjemahan}")
                         self.gimmick()
@@ -31,7 +31,7 @@ class KamusCLI:
                 with open("KamusCLI.txt", "r") as file:
                     lines = file.readlines()
                 for line in lines:
-                    kata, terjemahan = line.strip().split(":")
+                    kata, terjemahan = line.strip().split(" : ")
                     if terjemahan.lower() == kata_inggris.lower():
                         print(f"Terjemahan dari '{kata_inggris}' ke bahasa Indonesia: {kata}")
                         self.gimmick()
@@ -55,7 +55,7 @@ class KamusCLI:
         if kata and terjemahan:
             self.kamus.insert(kata.lower(), terjemahan.lower())
             with open("KamusCLI.txt", "a") as file:
-                file.write(f"{kata.lower()}:{terjemahan.lower()}\n")
+                file.write(f"{kata.lower()} : {terjemahan.lower()}\n")
             print(f"Kata '{kata}' sudah ditambahkan ke dalam kamus.")
 
     def tampilkan_kata(self):
@@ -69,8 +69,8 @@ class KamusCLI:
                 else:
                     print("Isi kamus:")
                     for line in lines:
-                        kata, terjemahan = line.strip().split(":")
-                        print(f"{kata}: {terjemahan}")
+                        kata, terjemahan = line.strip().split(" : ")
+                        print(f"{kata} : {terjemahan}")
 
     def gimmick(self):
         angka_acak = [random.randint(1, 100) for _ in range(10)]
