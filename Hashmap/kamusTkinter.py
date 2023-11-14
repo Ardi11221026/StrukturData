@@ -51,7 +51,7 @@ class KamusGUI(tk.Tk):
                 with open("KamusTkinter.txt", "r") as file:
                     lines = file.readlines()
                 for line in lines:
-                    kata, terjemahan = line.strip().split(" : ")
+                    kata, terjemahan = line.strip().split(":")
                     if terjemahan.lower() == kata_inggris.lower():
                         messagebox.showinfo("Terjemahan", f"Terjemahan dari '{kata_inggris}' ke bahasa Indonesia: {kata}")
                         self.gimmick()

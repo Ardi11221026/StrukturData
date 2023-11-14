@@ -55,7 +55,7 @@ class KamusGUI(QMainWindow):
                 with open("KamusPyQt5.txt", "r") as file:
                     lines = file.readlines()
                 for line in lines:
-                    kata, terjemahan = line.strip().split(" : ")
+                    kata, terjemahan = line.strip().split(":")
                     if terjemahan.lower() == kata_inggris.lower():
                         QMessageBox.information(self, "Terjemahan", f"Terjemahan dari '{kata_inggris}' ke bahasa Indonesia: {kata}")
                         self.gimmick()
