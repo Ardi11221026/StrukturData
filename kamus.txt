@@ -1,3 +1,0 @@
-sepatu - shoes
-api - fire
-fire - api
