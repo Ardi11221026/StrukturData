@@ -2,7 +2,7 @@ import tkinter as tk
 from tkinter import simpledialog, messagebox
 import random
 
-from kamusCLI import RedBlackTree
+from kamusGUI import RedBlackTree
 
 class KamusGUI:
     def __init__(self, master):
