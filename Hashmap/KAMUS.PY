@@ -1,6 +1,5 @@
 import sys
 from PyQt5.QtWidgets import QApplication, QMainWindow, QLabel, QPushButton, QInputDialog, QMessageBox
-from PyQt5.QtGui import QPixmap
 import os
 import random
 from RedBlackTree import RedBlackTree
