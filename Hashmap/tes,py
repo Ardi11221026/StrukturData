@@ -1,0 +1,11 @@
+def tampilkan_kata(self):
+    if not os.path.isfile("Kamus.txt"):
+        QMessageBox.information(self, "Kamus Belum Dibuat", "Kamus belum dibuat.")
+    else:
+        with open("Kamus.txt", "r") as file:
+            lines = file.readlines()
+            if not lines:
+                QMessageBox.information(self, "Kamus Kosong", "Kamus masih kosong.")
+            else:
+                kamus_content = " ".join(lines)
+                QMessageBox.information(self, "Kamus", kamus_content)

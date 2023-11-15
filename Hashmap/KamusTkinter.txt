@@ -1,2 +1,0 @@
-apel : apple
-buah : fruit

@@ -90,8 +90,9 @@ class KamusGUI(tk.Tk):
                     messagebox.showinfo("Kamus", kamus_content)
 
     def gimmick(self):
-        angka_acak = [random.randint(1, 100) for _ in range(10)]
-        messagebox.showinfo("Angka Acak", f"Angka acak dari 1 sampai 100: {angka_acak}")
+        AppleImageObject = Image.open("Images/Angkringan Sesi 3.jpg").resize((360,345))
+        AppleImage = ImageTk.PhotoImage(AppleImageImageObject)
+
 
 if __name__ == "__main__":
     kamus_gui = KamusGUI()
