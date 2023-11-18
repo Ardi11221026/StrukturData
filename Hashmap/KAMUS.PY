@@ -2,6 +2,7 @@ import sys
 from PyQt5.QtWidgets import QApplication, QMainWindow, QLabel, QPushButton, QInputDialog, QMessageBox
 import os
 import random
+
 from RedBlackTree import RedBlackTree
 
 class KamusGUI(QMainWindow):
