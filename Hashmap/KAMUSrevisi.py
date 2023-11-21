@@ -1,5 +1,4 @@
 import sys
-import random
 from PyQt5.QtWidgets import QApplication, QWidget, QVBoxLayout, QPushButton, QMessageBox, QInputDialog
 
 class RedBlackTree:
