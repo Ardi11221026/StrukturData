@@ -1,4 +1,5 @@
 import sys
+import random
 from PyQt5.QtWidgets import QApplication, QWidget, QVBoxLayout, QPushButton, QMessageBox, QInputDialog
 
 class RedBlackTree:
@@ -161,6 +162,7 @@ class TranslatorApp(QWidget):
         value = self.translate_word(key, self.red_black_tree_indo_to_eng)
         if value:
             QMessageBox.information(self, 'Hasil Terjemahan', f'Terjemahan: {value}')
+            self.gimmick(key)
         else:
             reply = QMessageBox.question(self, 'Kata Tidak Ditemukan', 'Kata tidak ditemukan. Apakah Anda ingin menambahkannya ke dalam kamus?',
                                          QMessageBox.Yes | QMessageBox.No)
@@ -172,6 +174,7 @@ class TranslatorApp(QWidget):
         value = self.translate_word(key, self.red_black_tree_eng_to_indo)
         if value:
             QMessageBox.information(self, 'Hasil Terjemahan', f'Terjemahan: {value}')
+            self.gimmick(key)
         else:
             reply = QMessageBox.question(self, 'Kata Tidak Ditemukan', 'Kata tidak ditemukan. Apakah Anda ingin menambahkannya ke dalam kamus?',
                                          QMessageBox.Yes | QMessageBox.No)
@@ -206,6 +209,37 @@ class TranslatorApp(QWidget):
         else:
             return None
 
+    def gimmick(self, key):
+        if key.lower() == "buah" or key.lower() == "fruit":
+            fruit_list = ["apel", "jeruk", "pisang", "anggur", "kiwi", "mangga", "pir", "semangka", "stroberi", "nanas"]
+            for fruit in fruit_list:
+                self.red_black_tree_indo_to_eng.insert(fruit, fruit)
+                self.red_black_tree_eng_to_indo.insert(fruit, fruit)
+            QMessageBox.information(self, "Gimmick", f"10 Nama Buah: {', '.join(fruit_list)}")
+        elif key.lower() == "hewan" or key.lower() == "animal":
+            animal_list = ["buaya", "ayam", "sapi", "kambing", "cacing", "naga", "domba", "tawon", "lebah", "semut", "singa", "gajah", "jerapah", "harimau"]
+            for animal in animal_list:
+                self.red_black_tree_indo_to_eng.insert(animal, animal)
+                self.red_black_tree_eng_to_indo.insert(animal, animal)
+            QMessageBox.information(self, "Gimmick", f"10 Nama Hewan: {', '.join(animal_list)}")
+        elif key.lower() == "gunung" or key.lower() == "mountain":
+            mountain_list = ["Bromo", "Kawi", "Dieng", "Sinabung", "Kerinci", "Merapi", "Agung", "Kintamani", "Rinjani", "Semeru", "Jaya Wijaya", "Meratus", "Kelud", "Merbabu"]
+            for mountain in mountain_list:
+                self.red_black_tree_indo_to_eng.insert(mountain, mountain)
+                self.red_black_tree_eng_to_indo.insert(mountain, mountain)
+            QMessageBox.information(self, "Gimmick", f"10 Nama Gunung di Indonesia: {', '.join(mountain_list)}")
+        elif key.lower() == "merek" or key.lower() == "brand":
+            brand_list = ["ESEMKA", "Hot Ways", "Navy Club", "Heiden Heritage", "Advan", "Indofood", "Wings food", "Erigo", "Eager", "Rexus", "Fantech", "Franc Nobel", "KYT", "NHK","NJS","Polygon","Le Minerale"]
+            for brand in brand_list:
+                self.red_black_tree_indo_to_eng.insert(brand, brand)
+                self.red_black_tree_eng_to_indo.insert(brand, brand)
+            QMessageBox.information(self, "Gimmick", f"10 Brand Terkenal di Indonesia: {', '.join(brand_list)}")
+        elif key.lower() == "mobil" or key.lower() == "car":
+            car_list = ["TOYOTA", "DAIHATSU", "WULING", "CHERRY", "NISSAN", "HYUNDAI", "SUZUKI", "HONDA", "BMW", "MERCEDES BENZ", "VW", "VOLVO", "ASTON MARTIN", "FERARRI","Lamborghini","Porsche","Mitsubishi"]
+            for car in car_list:
+                self.red_black_tree_indo_to_eng.insert(car, car)
+                self.red_black_tree_eng_to_indo.insert(car, car)
+            QMessageBox.information(self, "Gimmick", f"10 Brand Mobil Terkenal di Indonesia: {', '.join(car_list)}")
     def show_message_box(self, title, message):
         msg_box = QMessageBox()
         msg_box.setWindowTitle(title)
