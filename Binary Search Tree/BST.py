@@ -120,16 +120,16 @@ for key in keys:
     bst.add(key)
 
 # Menampilkan BST dengan pre-order traversal
-print("Pre-order Traversal:")
+print("Pre-order Traversal :")
 bst.pre_order_traversal(bst.root)
 print()
 
 # Menampilkan BST dengan in-order traversal
-print("In-order Traversal:")
+print("In-order Traversal :")
 bst.in_order_traversal(bst.root)
 print()
 
 # Menampilkan BST dengan post-order traversal
-print("Post-order Traversal:")
+print("Post-order Traversal :")
 bst.post_order_traversal(bst.root)
 print()
